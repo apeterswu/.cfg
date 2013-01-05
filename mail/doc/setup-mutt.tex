@@ -1,0 +1,293 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+ 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+ 
+\lstset{ %
+  language=bash,                % the language of the code
+  basicstyle=\ttfamily,           % the size of the fonts that are used for the code
+  %numbers=left,                   % where to put the line-numbers
+  numberstyle=\footnotesize,          % the size of the fonts that are used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=bt,                   % adds a frame around the code
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  numberstyle=\tiny\color{gray},        % line number style
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\#*}{*)},            % if you want to add a comment within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
+
+%\lstdefinelanguage{bash} {
+  %morekeywords={sudo, apt-get, install}
+%}
+
+\title{Set Up The Mutt Client}
+\author{Conghui He}
+\begin{document}
+\maketitle
+
+\section{Why Use Mutt}
+More and more GUI MUA available today such as web client, MS Outlook, 
+Thunderbird and so on, why do you choose to use the console-base and old 
+mail client, mutt? The answer is quite simple:
+\begin{quote}
+  All mail clients suck. This one just sucks less.\footnote{me, circa 1995}
+\end{quote}
+
+
+I am Linux fan and crazy about the efficiency of using Linux and the tools 
+that the Linux hackers use. Mutt is one of them, and it is suitable for 
+those who has to handle bundles of emails every day. I am not a chief leader 
+nor a manager, but rather a newbie to the computer science world subscribing 
+several mailing list, thus it is one of the daily work to read the 
+nearly 50 pieces of emails a day post by others and myself for a typical 
+discussion. A good and easy to customize MUA is assert to me. Here, Mutt is 
+the one.
+
+\section{Fire Up Mutt}
+This section explains the instructions to install the \textbf{mutt} into 
+your own operating system, and provides some configuration tips here. As far 
+as I am using Debain like distribution, the following command has to be 
+changed if you are using other kinds of distribution.
+
+\subsection{My Mutt Suite}
+Some would point out that mutt itself could really technically do most of 
+things including sending mails and retrieving mails from the server. This 
+absolutely works, but I like to have a division of labor of sort, splitting 
+the fetching, sorting, sending, and reading between different programs. 
+After all, it is the \emph{Unix Philosophy}.
+\begin{quote}
+  Write programs that do one thing and do ti well. Write programs to work 
+  together.\footnote{Doug Mcllroy}
+\end{quote}
+
+I have work with gmail for several years and now switch to mutt. So the 
+example here is to shows how to set up gmail in mutt. It is similar to set 
+up other email account by only make little modification.
+
+The mutt suite I use includes:
+\begin{itemize}
+    \item offlineimap
+    \item imapfilter
+    \item mutt
+    \item msmtp
+    \item archievemail
+    \item vim
+    \item goobook
+\end{itemize}
+
+The following subsections will detail explains each part of the tools and 
+the how to make the configuration along with them.
+
+
+\subsection{Synchronizing mail with offlineimap}
+There are two ways to fetch the emails from the remote mail server by using 
+the POP and IMAP protocols. 
+
+
+POP protocol is suitable for conventional email server. With this protocol, 
+you will download all the mails from the remote mail server by indicating 
+whether to delete the email you download from the server or not. If you 
+don't delete them, the Inbox in the remote mail server will populated with 
+hundreds of mails. But I you delete them, and you delete the local mails 
+accidentally, referring to the old mails will be nearly impossible. What's 
+more, It is note suitable for todays more advanced emails features, such 
+labeling and subdirectories.
+
+IMAP is born to deal with such difficulties. It can directly connect to the 
+remote mail server and performs the manipulations there, such as move an 
+email from one folder to another, which is similar to label the email. 
+What's more, you don't have to download all the mails from the server as 
+you can and have to view the emails online. This can save lots of space on 
+disk, however, it decrease the efficiency as it depends on the speeds of 
+your network. On the other hand, you can not read your old mails if you are 
+offline.
+
+Here come the offline IMAP. Offline Imap uses the IMAP protocol to 
+synchronize a local copy of all your emails messages for multiple accounts 
+in a maildir format. Having your email be local means that reading is fast, 
+since the emails have already download to your machine. Any changes you 
+make, such as deleting, changing flags (important, read, unread, starred, 
+\ldots), or moving the email to a different folder are performed on the 
+local copy, which is periodically synchronized with the remote copy. That is 
+what I need to fetch the gmail.
+
+
+\subsection{Sorting mail with imapfilter}
+If you are experienced gmail user, you must be familiar with the filtering 
+ability of the gmail. You can specify different kinds of criteria for 
+specific mails to be performed with specific operation. For example, you can 
+move the email from \textsf{mutt-users@mutt.org} to a specific folder and 
+mark as starred, or you can delete the mail containing \textsf{violence} key 
+words and so on. 
+
+
+Gmail has a powerful ability to make it. So, if you are using gmail, you can 
+either set the filter on the gmail remote server side, or make the 
+configuration locally. But If you have mail accounts that the remote server 
+side doesn't provide this function, you have to do it yourself.
+
+
+\subsection{Reading mail with mutt}
+Supposing that you have synchronized your mails from the server and 
+performed the necessary filtering, it's time to set up mutt and to read it. 
+Configure your mutt client is an art as configuring vim. There are one 
+hundred .muttrc if there are one hundred users there. The details of the 
+configuration will shown later and I just what kinds of thing should be 
+configured here. 
+
+\begin{itemize}
+  \item \emph{account information}. The account information including the 
+    name of the user and password of the user should be given.
+  \item \emph{color}. Color is one of the attractive reason why someone 
+    switch to mutt. The quotations, header, footer, signature, and so on can 
+    have their own color defined by yourself.
+  \item \emph{encryption}. You'd better not to store your password in plain 
+    text, encryption here is necessary.
+  \item \emph{mailing list}. You can what your mailing lists are and some of 
+  which are subscribed.
+  \item \emph{address book}. The address book could store the contacts for 
+    you.
+\end{itemize}
+
+\subsection{Sending mail with msmtp}
+Msmtp is a very simple SMTP client. It contacts the SMTP with your account 
+credentials when you send mail and then passes the sent email to the server.
+
+\subsection{Saving old emails with archivemail}
+If you have thousands of mails, you'd better archive them for better storing 
+and organization. This is quite flexible since you can specify the different 
+criteria to select the mails.
+
+\subsection{Synchronize your contacts with goobook}
+If you are using gmail, I am sure the gmail contacts mean a lot to you. It 
+is necessary to synchronize the gmail contacts with the mutt address book.
+
+\section{Detail Configurations}
+Now presents the detail configurations step by step.
+
+\subsection{Preparation}
+In Debain-like Operating system, some package should be installed for 
+further use. 
+
+%\lstinputlisting[language=bash]{preparation}
+\lstset{caption={Install necessary packages}}
+\begin{lstlisting}
+  sudo apt-get install mutt -y
+  sudo apt-get install urlview -y
+  sudo apt-get install muttprint -y
+  sudo apt-get install offlineimap -y
+  sudo apt-get install imapfilter -y
+  sudo apt-get install msmtp-mta -y
+  sudo apt-get install archivemail -y
+\end{lstlisting}
+
+With all the necessary required packages installed, we next turn to fire up 
+the folder and files.
+
+It is easier to keep everything together under one directory for git to keep 
+track of and for scripts for installation and configuration. Different 
+programs have their own configuration file with specific name and in 
+specific location, however, we can accommodate to it by make some symbolic 
+files.
+
+\lstset{caption={Building folder hierarchy}}
+\begin{lstlisting}
+  # every configuration is populated in ~/.mail_configs
+  mkdir ~/.mail_configs
+
+  # main folder for mutt configuration
+  mkdir ~/.mail_configs/mutt
+
+  # different filtering criteria stored here.
+  mkdir ~/.mail_configs/imapfilter
+
+  # make this directory readable to you only
+  chmod -R 700 ~/.mail_configs
+
+  # make another set of folders to hold the local
+  # copy for offlineimap
+  mkdir ~/.mail # containing all accounts
+  # each account in a separate folder
+  mkdir ~/.mail/gmail 
+  chmod -R 700 ~/.mail
+
+  # make symblinks for default mutt directory
+  ln -s ~/.mail_configs/mutt ~/.mutt
+\end{lstlisting}
+
+\subsection{Configurate offlineimap}
+A 
+\href{https://github.com/jgoerzen/offlineimap/blob/master/offlineimap.conf}{fully 
+annotated configuration file} is available if you want to see all the bells 
+and whistles available. 
+
+The default offlineimap configuration file is named \textsf{~/.offlineimap}. 
+As mentioned above, all the configuration files are stored in a single 
+directories and the other necessary files are created by \textsf{ln} command.
+So, now we save the offlineimap configuration file \textsf{offlineimaprc} in 
+\textsf{~/.mail\_configs/offlineimaprc} and make a symbolic link named 
+\textsf{~/.offlineimaprc} to it.
+
+\lstset{caption={configuring offlineimap}}
+\begin{lstlisting}
+  # create the symbolic link for offlineimap configs
+  ln -s ~/.mail_configs/offlineimaprc ~/.offlineimaprc
+\end{lstlisting}
+
+When you have configurated your own offlineimaprc, then you can test it from 
+the terminal to make sure that it's working at this point. If you are trying 
+to connect to Gmail, be sure you have \textbf{enable IMAP} in the Gmail 
+interface.
+\begin{lstlisting}
+  # test the offlineimap configuration
+  offline -c ~/.offlineimaprc
+\end{lstlisting}
+
+\subsection{Configurate imapfilter}
+\href{https://github.com/lefcha/imapfilter}{Imapfilter} is another program 
+which is able to sort and move messages around on the IMAP server. I use it 
+before calling offlineimap to sort my mail into the correct folder (ie, 
+messages for a certain class into a given folder).  The configuration file 
+can use 
+\href{http://en.wikipedia.org/wiki/Regular\_expression\_examples#Examples}{regular 
+expressions} to do the sorting, and is extendable using Lua, if you want to 
+do so.
+Sorting can take place based on who an email is sent from, sent to, title 
+contents, body contents, other header information, email size, age of the 
+email, email status (recent, unread,…) and many other possibilities in 
+combination.
+
+Alternative, using the filter integrated in Gmail is a good approach which can 
+reach the similar effect.
+\subsection{Configurate encryption}
+Encryption is quite important. At least you should store your email password 
+in plain text, which is not only secure but also difficult for you to share 
+your work with your friends. What's more, Encrypting the email content is also 
+important as the content may contains confidential information.
+
+To configurate the encryption, you should first install the required package, 
+with the following command.
+\lstset{caption={configurate encryption}}
+\begin{lstlisting}
+  sudo apt-get install python-keyring -y
+\end{lstlisting}
+
+\end{document}

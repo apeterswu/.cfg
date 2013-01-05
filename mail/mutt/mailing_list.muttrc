@@ -1,0 +1,7 @@
+lists vim_use@googlegroups.com
+subscribe vim_use@googlegroups.com
+
+subscribe mutt-users@mutt.org
+
+set followup_to
+set honor_followup_to = yes

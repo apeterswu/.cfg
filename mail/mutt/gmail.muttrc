@@ -1,0 +1,17 @@
+# Gmail information
+
+unset record 	# gmail does this automatically
+set postponed=+"gmail/[Gmail].Drafts"
+unset signature
+
+# use msmtp to send outgoing mail to the mailserver
+set sendmail="/usr/bin/msmtp -C /home/rice/.mail_configs/msmtprc -a gmail"
+
+set from="heconghui@gmail.com"
+
+# Thread yourself (hopefully)
+#my_hdr bcc: heconghui@gmail.com
+
+# pgp settings
+#unmy_hdr X-PGP-Key
+#set pgp_autosign = no

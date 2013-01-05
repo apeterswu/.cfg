@@ -1,0 +1,21 @@
+It includes the basic configuration and a installation script to 
+automatically configurate for the mutt client. The configuration may not 
+suitable for you, however any of the modification is appreciate for you to 
+make it easy to use.
+
+If you want to have a rough knowledge of how to configurate your own mutt, 
+you can have a look in doc/setup-mutt.pdf. It provides a rough construct 
+and example about how to build your own mutt.
+
+If you have had your own mutt built. You can make some modification on 
+install.sh to meet your need to simplify configuration next time you switch 
+another computer.
+
+The files containing usernames and password that you should modified is:
+ - netrc
+ - goobookrc
+ - msmtprc
+
+
+Any suggestion and bug report is appreciate. You can contact 
+Conghui He <heconghui@gmail.com>
