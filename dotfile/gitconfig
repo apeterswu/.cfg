@@ -1,0 +1,11 @@
+[user]
+	name = Conghui He
+	email = heconghui@gmail.com
+[colo]
+	branch = auto
+[color]
+	branch = auto
+	diff = auto
+	interative = auto
+	status = auto
+    ui = auto
