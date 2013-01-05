@@ -1,0 +1,26 @@
+#!/bin/bash
+# ever-used option
+#   --pad-oper
+
+command="astyle \
+    --delete-empty-lines \
+    --indent=spaces=4
+    --style=kr \
+    --break-blocks \
+    --pad-header \
+    --indent-labels \
+    --indent-switches \
+    --indent-preprocessor \
+    --indent-col1-comments \
+    --add-brackets \
+    --unpad-paren \
+    --min-conditional-indent=0 \
+    --max-instatement-indent=60 \
+    --align-pointer=name \
+    --align-reference=name \
+    --suffix=none \
+    --lineend=linux"
+
+find . -type f \( -name "*.c" -o -name "*.cpp" \
+    -o -name "*.h" -o -name "*.cxx" -o -name "*.CC" \) \
+    -print0 | xargs -0 -I {} $command {}

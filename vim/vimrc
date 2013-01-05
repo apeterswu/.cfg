@@ -1,0 +1,13 @@
+"                           Plugins Manager:
+" ------------------------------------------------------------------
+" All plugins are stored in ~/.vim/bundle using the pathongen plugin
+call pathogen#infect('bundle')
+" ------------------------End of Plugin Manager---------------------"
+
+source $HOME/.vim/conf/globalvar.vim
+source $HOME/.vim/conf/option.vim
+source $HOME/.vim/conf/function.vim
+source $HOME/.vim/conf/autocmd.vim
+source $HOME/.vim/conf/mapping.vim
+source $HOME/.vim/conf/plugin.vim
+source $HOME/.vim/conf/command.vim

@@ -1,0 +1,8 @@
+#!/usr/bin/python2.7
+
+import sys
+sys.path.append('/home/rice/.vim/local/lib/python')
+
+
+import clewn.vim as vim
+vim.main()
