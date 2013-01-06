@@ -1,0 +1,10 @@
+alias l='ls -lS'
+alias la='l -aS'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias cd..='cd ..'
+alias ssh='ssh -YCc blowfish'
+
+# in this manner, a nice command:  h <searchterm>
+alias h='history | grep $1'
