@@ -2,14 +2,20 @@
 
 # The script is used to make soft link to HOME
 
-DEST=$HOME
+DESTDIR="${HOME}/"
 
 for f in *; do
     file_ext=${f##*.} # get the file extension
+    DESTFILE="${DESTDIR}/.$f" # the name of destination file
 
-    if [[ $file_ext != "sh" ]]; then
-        ln -sf "`pwd`/${f}" "${DEST}/.${f}"
-    fi
+    # skip the distributing shell script
+    [[ $file_ext = "sh" ]] && continue
+
+    # remove the existing files
+    [[ -e $DESTFILE ]] && rm -rf $DESTFILE
+
+    # make a linkage to that file
+    ln -sf "`pwd`/$f" "${DESTFILE}"
 done
 
-echo "Symbolic linking done!"
+echo "Installation Done!"

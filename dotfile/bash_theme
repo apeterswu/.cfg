@@ -37,11 +37,23 @@ bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
+# Nicer man pages
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'                           
+export LESS_TERMCAP_so=$'\E[01;44;33m'                                 
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+_PREFIX=""
+_POSTFIX=""
 _USERNAME="${bldgrn}\u${txtrst}"
-_AT="${txtred}@${txtrst}"
-_HOSTNAME="${txtgrn}\h${txtrst}"
+_AT="${bldgrn}@${txtrst}"
+_HOSTNAME="${bldgrn}\h${txtrst}"
 _DATE="[$(date +%k:%M:%S) ]"
-_POINTER="${bldblu}\W $ ${txtrst}"
+_DIR="${bldblu}\W${txtrst}"
+_POINTER="${bldblu}> ${txtrst}"
 _NORMAL="${txtrst}"
 
 DASH="─"
@@ -76,4 +88,4 @@ BOTTOM=getbottom
 
 alias ll="$TOP; ls -FG; $BOTTOM"
 alias la="$TOP; ls -aFG; $BOTTOM"
-export PS1="${_USERNAME} ${_POINTER}${_NORMAL}"
+export PS1="${_PREFIX}${_USERNAME}${_AT}${_HOSTNAME} ${_DIR}${_POSTFIX} ${_POINTER}${_NORMAL}"

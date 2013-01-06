@@ -1,0 +1,35 @@
+[global_config]
+  window_state = maximise
+  title_hide_sizetext = True
+  dbus = True
+  tab_position = bottom
+  borderless = True
+  hide_from_taskbar = True
+[keybindings]
+  go_up = <Shift><Alt>k
+  next_tab = <Super>period
+  prev_tab = <Super>comma
+  go_down = <Shift><Alt>j
+  go_right = <Shift><Alt>l
+  go_left = <Shift><Alt>h
+[profiles]
+  [[default]]
+    use_system_font = False
+    background_darkness = 0.88
+    background_type = transparent
+    scrollbar_position = hidden
+    icon_bell = False
+    show_titlebar = False
+    custom_command = /bin/zsh
+    font = WenQuanYi Micro Hei Mono 11
+    allow_bold = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      profile = default
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
