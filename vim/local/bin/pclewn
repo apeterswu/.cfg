@@ -1,0 +1,4 @@
+#!/bin/bash
+
+EDITOR="gvim"
+pyclewn --gdb="async" --args="--args $@" --cargs='-c "call PyClewnPre()"'
