@@ -81,10 +81,11 @@ inoremap {<cr> {<cr>}<c-[>ko
 
 " [Build the project]
 nmap <S-M> :call Build()<cr>
-nmap <C-S-M> :call Rebuild()<cr>
+"nmap <C-S-M> :call Rebuild()<cr>
 
 " [Run the project]
 nmap <S-R> :call RunProject()<cr>
+nmap <C-F5> : call RunProject()<cr>
 
 " [Spell checking]"
 map <leader>se :setlocal spell spelllang=en_us<cr>
