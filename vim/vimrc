@@ -4,10 +4,28 @@
 call pathogen#infect('bundle')
 " ------------------------End of Plugin Manager---------------------"
 
-source $HOME/.vim/conf/globalvar.vim
-source $HOME/.vim/conf/option.vim
-source $HOME/.vim/conf/function.vim
-source $HOME/.vim/conf/autocmd.vim
-source $HOME/.vim/conf/mapping.vim
-source $HOME/.vim/conf/plugin.vim
-source $HOME/.vim/conf/command.vim
+let g:conf_path_unix = '$HOME/.vim/conf/'
+let g:conf_path_win32 = '$HOME/vimfiles/conf/'
+
+function! SourceScript(files)
+    for f in split(glob(a:files), '\n')
+        exe 'source' f
+    endfor
+endfunction
+
+if has ("win32")
+    call SourceScript(g:conf_path_win32 . 'option.vim') " source functions secondly
+    call SourceScript(g:conf_path_win32 . 'func/*.vim') " source functions secondly
+    call SourceScript(g:conf_path_win32 . 'plugin/*.vim')
+    call SourceScript(g:conf_path_win32 . 'autocmd.vim')
+    call SourceScript(g:conf_path_win32 . 'mapping.vim')
+    call SourceScript(g:conf_path_win32 . 'command.vim')
+else
+    let g:netrw_home = "/tmp"
+    call SourceScript(g:conf_path_unix . 'option.vim')
+    call SourceScript(g:conf_path_unix . 'func/*.vim') " source functions secondly
+    call SourceScript(g:conf_path_unix . 'plugin/*.vim')
+    call SourceScript(g:conf_path_unix . 'autocmd.vim')
+    call SourceScript(g:conf_path_unix . 'mapping.vim')
+    call SourceScript(g:conf_path_unix . 'command.vim')
+endif

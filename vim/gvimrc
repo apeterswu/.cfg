@@ -1,16 +1,8 @@
 " The file will be only loaded running gvim
+" It is used just as a pointer to point to the specific configuration 
 
 if has("win32")
-    set langmenu=none
-    let $LANG='zh_CN.UTF-8'
-    source $VIMRUNTIME/delmenu.vim
-    source $VIMRUNTIME/menu.vim
-elseif has("unix")
-    set guifont=Droid\ Sans\ Mono\ Dotted\ 10,Monospace\ 11
+    call SourceScript(g:conf_path_win32 . 'gui-win32.vim')
+else
+    call SourceScript(g:conf_path_unix . 'gui-unix.vim')
 endif
-set langmenu=C
-set mousemodel=popup        " Enable right click of the mouse.
-set columns=94              " The width of the windows
-set lines=48
-"colorscheme b_gentooish
-
