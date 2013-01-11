@@ -48,13 +48,14 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 _PREFIX=""
 _POSTFIX=""
-_USERNAME="${bldgrn}\u${txtrst}"
-_AT="${bldgrn}@${txtrst}"
+_USERNAME="${bldgrn}\u"
+_AT="@"
 _HOSTNAME="${bldgrn}\h${txtrst}"
 _DATE="[$(date +%k:%M:%S) ]"
-_DIR="${bldblu}\W${txtrst}"
-_POINTER="${bldblu}> ${txtrst}"
+_DIR="${bldblu}\w"
+_POINTER="> ${txtrst}"
 _NORMAL="${txtrst}"
+
 
 DASH="─"
 function gettop {
@@ -88,4 +89,5 @@ BOTTOM=getbottom
 
 alias ll="$TOP; ls -FG; $BOTTOM"
 alias la="$TOP; ls -aFG; $BOTTOM"
-export PS1="${_PREFIX}${_USERNAME}${_AT}${_HOSTNAME} ${_DIR}${_POSTFIX} ${_POINTER}${_NORMAL}"
+PS1='\[\033[01;32m\]\u\[\033[01;34m\] \W >\[\033[00m\] '
+
