@@ -1,5 +1,6 @@
 "							User Define Commands:
 "------------------------------------------------------------------
-command!	Vimrc				tabedit	$HOME/.vimrc
 command!    Qmake               call Qmake()
+command!    Run                 call RunProject()
+command!    Rebuild             call Rebuild()
 "--------------------End of User Define Commands ------------------
