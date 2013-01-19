@@ -3,7 +3,6 @@
 " All plugins are stored in ~/.vim/bundle using the pathongen plugin
 call pathogen#infect('bundle')
 " ------------------------End of Plugin Manager---------------------"
-
 let g:conf_path_unix = '$HOME/.vim/conf/'
 let g:conf_path_win32 = '$HOME/vimfiles/conf/'
 

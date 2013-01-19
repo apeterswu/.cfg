@@ -37,6 +37,7 @@ set wildmenu					" Command line completion is enhanced.
 set winaltkeys=no				" Disable ALT key for the GVIM application.
 set hidden          	        "Make the buffer hidden, instead of unload
 set whichwrap+=<,>,[,]			"Move the cursor to next or previous line.
+set noswapfile
 set textwidth=80
 
 " [Search configuration]
@@ -46,11 +47,10 @@ set incsearch           		" Make search act like search in modern browsers
 set magic               		" Use regular expressions for searching
 
 " [Tab configuration]
-set noswapfile
-set shiftwidth=4        		" Number of space for indenting
-set tabstop=4           		" Width of TAB
-set expandtab           		" Insert space for TAB
-set softtabstop=4
+set shiftwidth  =4              " Number of space for indenting
+set tabstop     =4              " Width of TAB
+set softtabstop =4
+set expandtab                   " Insert space for TAB
 set smarttab
 
 " [spell checking]
