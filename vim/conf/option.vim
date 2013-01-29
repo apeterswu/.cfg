@@ -97,9 +97,9 @@ set diffopt=filler,vertical
 
 " [platform specific options]
 if has("win32")
-    set guifont=DejaVu_Sans_Mono:h10:cANSI
     set encoding=utf-8
     set fileencodings=ucs-bom,cp936,gb18030,utf-8,big5,iso-8859-1
+    set fileformats=dos
 elseif has("unix")
     set encoding=utf-8
     setglobal fenc=utf-8
