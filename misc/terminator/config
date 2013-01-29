@@ -23,7 +23,7 @@
     icon_bell = False
     show_titlebar = False
     custom_command = /bin/zsh
-    font = WenQuanYi Micro Hei Mono 11
+    font = WenQuanYi Micro Hei Mono 10
     allow_bold = False
     scrollback_infinite = True
 [layouts]
