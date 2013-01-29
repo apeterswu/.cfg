@@ -7,8 +7,9 @@ endfunc
 " [Build the project]
 function! Build()
     if filereadable("Makefile")
-        exec "make -j4"
-    else
+        "exec "make -j4"
+        exec "make"
+    elseif &filetype != 'c' && &filetype != 'cpp'
         exec "SCCompile"
     endif
 endfunction
@@ -27,7 +28,17 @@ func! RunProject()
         else
             exec "!./" . expand(expand("%:p:h:t"))
         endif
-    else
+    elseif &filetype != 'c' && &filetype != 'cpp'
         exec "SCCompileRun"
     endif
 endfunc
+
+function! Vargrind()
+    if filereadable("Makefile") && (&filetype == 'c' || &filetype == 'cpp')
+        if filereadable("input")
+            exec "!valgrind ./" . expand(expand("%:p:h:t")). " < input"
+        else
+            exec "!valgrind ./" . expand(expand("%:p:h:t"))
+        endif
+    endif
+endfunction
