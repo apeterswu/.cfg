@@ -1,0 +1,52 @@
+#!/bin/bash
+
+TEMP_TODAY=$(date +%Y-%m-%d)
+buildlog="/tmp/build-on-${TEMP_TODAY}.log"
+error_flag="error"
+warning_flag="warning"
+distance=3
+
+txtgrn='\e[0;32m' # Green
+txtred='\e[0;31m' # Red
+txtrst='\e[0m'    # Text Reset
+
+# run the make command
+make -j4 $@ &> $buildlog 
+
+if ! grep -q -e "$warning_flag" -e "$error_flag" $buildlog; then
+    # build successful
+    echo -e "${txtgrn}Accepted${txtrst}"
+    exit 0
+fi
+
+function filt()
+{
+    check_type=$1
+
+    line=`cat $buildlog | grep "$check_type" | \
+        head -n 1 | awk -F : '{print $2}'`
+
+    # not found, just return to skip the remaining checking
+    if [[ -z $line ]]; then
+        return
+    fi
+
+    line_begin=`expr $line - $distance`
+    line_end=`expr $line + $distance`
+
+    if [[ $line_begin -lt 0 ]]; then
+        line_begin=0
+    fi
+
+    # get the current file name
+    filename=`cat $buildlog | grep "$check_type" | \
+        head -n 1 | awk -F : '{print $1}'`
+
+    echo -e -n "${txtred}Oops..${txtrst} [$filename] still has $check_type at $line"
+    exit -1
+
+}
+
+for f in $error_flag $warning_flag; do
+    filt "$f"
+done
