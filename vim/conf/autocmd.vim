@@ -5,6 +5,9 @@ au InsertEnter * call InsertStatuslineColor(v:insertmode)
 " switch color between insert mode and normal mode
 au InsertLeave * hi statusline guibg=#333333 guifg=White ctermbg=0 ctermfg=7
 
+" Set critical make for C and CPP file
+autocmd FileType c,cpp set makeprg='$HOME/.vim/local/bin/crazymake'
+
 " Highlight the text if the length over 81
 highlight OverLength ctermbg=darkred guibg=#FFD9D9
 autocmd filetype c,cpp match OverLength /\%81v.\+/
