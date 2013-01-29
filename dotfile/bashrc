@@ -65,3 +65,4 @@ export XIM_PROGRAM=fcitx
 
 export PATH=${PATH}:/opt/FriendlyARM/toolschain/4.5.1/bin
 export PATH=${PATH}:$HOME/.vim/local/bin
+export PATH=${PATH}:$HOME/Dropbox/bin
