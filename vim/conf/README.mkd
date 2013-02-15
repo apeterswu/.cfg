@@ -1,0 +1,5 @@
+This folder contains different set of config for vim that would be sourced 
+when vim start up. It is similar to join all the files in the current folder 
+and sub-folder in a specific order in .vimrc.
+
+Here is the short description for each file/folder.
