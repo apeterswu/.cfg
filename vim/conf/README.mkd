@@ -2,13 +2,13 @@ This folder contains different set of config for vim that would be sourced
 when vim start up. It is similar to join all the files in the current folder 
 and sub-folder in a specific order in .vimrc. Here is the short description for each file/folder.
 
+- [func](func): folder containing different kinds of functions
+- [plugin](plug): folder containing different setting for each plugin
 - [autocmd.vim](autocmd.vim): the command that would be executed automatically in specific 
 situations when vim starts.
 - [command.vim](command.vim): user-defined command
-- [func](func): folder containing different kinds of functions
 - [gui-unix.vim](gui-unix.vim): script that will be sourced for gvim in unix-link platform
 - [gui-win32.vim](gui-win32.vim): script that will be sourced for gvim win32 platform
 - [mapping.vim](mapping.vim): key-mapping for vim
 - [option.vim](option.vim): general setting in vim
-- [plugin](plug): folder containing different setting for each plugin
 

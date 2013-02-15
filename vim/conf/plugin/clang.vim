@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------
 "							   [clang-complete]
 " ------------------------------------------------------------------------------
-let g:clang_complete_auto        = 1 " enable it or not
+let g:clang_complete_auto        = 0 " enable it or not
 let g:clang_use_library          = 1 " use library instead of binary file
 let g:clang_library_path         = "/usr/lib/llvm"
 let g:clang_snippets             = 1 " use snippet for function completion

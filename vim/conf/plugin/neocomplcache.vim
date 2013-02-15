@@ -6,7 +6,7 @@ let g:neocomplcache_enable_smart_case            = 1 " case insensitive
 let g:neocomplcache_enable_camel_case_completion = 1 "camel case completion
 let g:neocomplcache_enable_underbar_completion   = 1 " underscore completion
 let g:neocomplcache_min_syntax_length            = 3 " min length to complete
-let g:neocomplcache_enable_auto_select           = 1 " auto select or not
+let g:neocomplcache_enable_auto_select           = 0 " auto select or not
 let g:neocomplcache_force_overwrite_completefunc = 1 " overwrite completefunc
 let g:neocomplcache_lock_buffer_name_pattern     = '\*fuzzyfinder\*'
 
