@@ -63,6 +63,10 @@ export XMODIFIERS="@im=fcitx"
 export XIM=fcitx
 export XIM_PROGRAM=fcitx
 
+# load some tools for book algorithms
+algs_config="${HOME}/workspace/algorithms/bin/config.sh"
+test -r ${algs_config} && source ${algs_config}
+
 export PATH=${PATH}:/opt/FriendlyARM/toolschain/4.5.1/bin
 export PATH=${PATH}:$HOME/.vim/local/bin
 export PATH=${PATH}:$HOME/Dropbox/bin
