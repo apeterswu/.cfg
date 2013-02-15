@@ -1,0 +1,4 @@
+This folder contains some configurations for some external plugins/software 
+instead of vim config
+
+- [makefile_4_java](makefile_4_java): a sample Makefile for Java 

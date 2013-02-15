@@ -1,0 +1,19 @@
+# Here is a simple Makefile for java
+# You should add your source-file to $(SOURCES) variable
+#
+JFLAGS  = -g
+JAVAC   = javac
+CP      = .:${CLASSPATH}
+SOURCES =
+
+.SUFFIXES: .java .class
+
+.java.class:
+	$(JAVAC) $(JFLAGS) -classpath $(CP) $*.java
+
+default: classes
+
+classes: $(SOURCES:.java=.class)
+
+clean:
+	$(RM) *.class

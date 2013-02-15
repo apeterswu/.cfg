@@ -7,8 +7,7 @@ endfunc
 " [Build the project]
 function! Build()
     if filereadable("Makefile")
-        "exec "make -j4"
-        exec "make"
+        exec "make -j4"
     elseif &filetype != 'c' && &filetype != 'cpp'
         exec "SCCompile"
     endif
@@ -20,15 +19,30 @@ function! Qmake()
     call Build()
 endfunction
 
+function! Jmake()
+    if !filereadable("Makefile")
+        exec "!cp $HOME/.vim/local/conf/makefile_4_java Makefile"
+    else
+        echo "Makefile already exist"
+    endif
+endfunction
 " [Run the project]
 func! RunProject()
-    if filereadable("Makefile")
+    if filereadable("Makefile") 
         if filereadable("input")
-            exec "!./" . expand(expand("%:p:h:t")). " < input"
+            if &filetype == 'c' || &filetype =='cpp'
+                exec "!./" . expand(expand("%:p:h:t")). " < input"
+            elseif &filetype =='java'
+                exec "!java " . expand(expand("%:p:h:t")) . " < input"
+            endif
         else
-            exec "!./" . expand(expand("%:p:h:t"))
+            if &filetype == 'c' || &filetype == 'cpp'
+                exec "!./" . expand(expand("%:p:h:t"))
+            elseif &filetype == 'java'
+                exec "!java " . expand(expand("%:p:h:t")) 
+            endif
         endif
-    elseif &filetype != 'c' && &filetype != 'cpp'
+    elseif &filetype != 'c' && &filetype != 'cpp' && &filetype != 'java'
         exec "SCCompileRun"
     endif
 endfunc
