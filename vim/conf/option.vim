@@ -38,7 +38,7 @@ set winaltkeys=no				" Disable ALT key for the GVIM application.
 set hidden          	        "Make the buffer hidden, instead of unload
 set whichwrap+=<,>,[,]			"Move the cursor to next or previous line.
 set noswapfile
-set textwidth=80
+set textwidth=75
 
 " [Search configuration]
 set ignorecase          		" Ignore case when searching
