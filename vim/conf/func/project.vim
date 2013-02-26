@@ -8,8 +8,8 @@ endfunc
 function! Build()
     if filereadable("Makefile")
         exec "make -j4"
-    elseif &filetype != 'c' && &filetype != 'cpp'
-        exec "SCCompile"
+    elseif &filetype == 'java'
+        exec "!javac %"
     endif
 endfunction
 
@@ -26,6 +26,7 @@ function! Jmake()
         echo "Makefile already exist"
     endif
 endfunction
+
 " [Run the project]
 func! RunProject()
     if filereadable("Makefile") 
@@ -42,7 +43,7 @@ func! RunProject()
                 exec "!java " . expand(expand("%:p:h:t")) 
             endif
         endif
-    elseif &filetype != 'c' && &filetype != 'cpp' && &filetype != 'java'
+    elseif &filetype != 'c' && &filetype != 'cpp' 
         exec "SCCompileRun"
     endif
 endfunc
