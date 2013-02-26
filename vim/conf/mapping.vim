@@ -22,14 +22,6 @@ cnoremap    <c-j>   <down>
 cnoremap    <c-h>   <left>
 cnoremap    <c-l>   <right>
 
-" [CTRL-hjkl to move the cursor in insert mode]
-inoremap    <m-k>   <c-k>
-inoremap    <c-k>   <up>
-inoremap    <c-j>   <down>
-inoremap    <c-h>   <left>
-inoremap    <c-l>   <right>
-inoremap    <c-o>   <esc>o
-
 " [Easy indent in visual mode]
 xnoremap    <   <gv
 xnoremap    >   >gv
