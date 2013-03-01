@@ -27,17 +27,25 @@ function! Jmake()
     endif
 endfunction
 
+function! Cumake()
+    if !filereadable("Makefile")
+        exec "!cp $HOME/.vim/local/conf/makefile_4_cuda Makefile"
+    else
+        echo "Makefile already exist"
+    endif
+endfunction
+
 " [Run the project]
 func! RunProject()
     if filereadable("Makefile") 
         if filereadable("input")
-            if &filetype == 'c' || &filetype =='cpp'
+            if &filetype == 'c' || &filetype =='cpp' || &filetype == 'cuda'
                 exec "!./" . expand(expand("%:p:h:t")). " < input"
             elseif &filetype =='java'
                 exec "!java " . expand(expand("%:p:h:t")) . " < input"
             endif
         else
-            if &filetype == 'c' || &filetype == 'cpp'
+            if &filetype == 'c' || &filetype == 'cpp' || &filetype == 'cuda'
                 exec "!./" . expand(expand("%:p:h:t"))
             elseif &filetype == 'java'
                 exec "!java " . expand(expand("%:p:h:t")) 
