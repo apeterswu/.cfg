@@ -1,7 +1,7 @@
 " ----------------------------------------------------------------
 "							[NeoComplCache]
 " ----------------------------------------------------------------
-let g:neocomplcache_enable_at_startup            = 0 " Enable it or not
+let g:neocomplcache_enable_at_startup            = 1 " Enable it or not
 let g:neocomplcache_enable_smart_case            = 1 " case insensitive
 let g:neocomplcache_enable_camel_case_completion = 1 "camel case completion
 let g:neocomplcache_enable_underbar_completion   = 1 " underscore completion

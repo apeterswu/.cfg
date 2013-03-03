@@ -1,1 +1,0 @@
-../cpp/stl.vim
